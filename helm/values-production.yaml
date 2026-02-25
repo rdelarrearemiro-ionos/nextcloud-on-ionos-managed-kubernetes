@@ -2,7 +2,7 @@
 # Replace all YOUR_* placeholders before deploying
 
 image:
-  tag: "28"
+  tag: "32"
 
 nextcloud:
   host: YOUR_DOMAIN  # e.g. nextcloud.example.com

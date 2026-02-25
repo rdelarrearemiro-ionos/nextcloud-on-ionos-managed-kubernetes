@@ -108,15 +108,15 @@ kubectl apply -f manifests/05-ingress/
 
 | Component | Version |
 |---|---|
-| IONOS Managed Kubernetes | 1.29 |
-| Nextcloud | 28.x |
-| Nextcloud Helm Chart | 4.x |
-| cert-manager | 1.14 |
-| NGINX Ingress Controller | 1.9 |
+| IONOS Managed Kubernetes | 1.29+ |
+| Nextcloud | 32.x |
+| Nextcloud Helm Chart | 8.x |
+| cert-manager | 1.19 |
+| NGINX Ingress Controller | 1.14 |
 
 ## Related Resources
 
-- [IONOS Managed Kubernetes Docs](https://docs.ionos.com/cloud/compute-services/managed-kubernetes)
+- [IONOS Managed Kubernetes Docs](https://docs.ionos.com/cloud/containers/managed-kubernetes)
 - [IONOS DBaaS PostgreSQL Docs](https://docs.ionos.com/cloud/databases/postgresql)
 - [Nextcloud Helm Chart](https://github.com/nextcloud/helm)
 - [cert-manager Docs](https://cert-manager.io/docs/)
