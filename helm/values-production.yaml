@@ -1,0 +1,69 @@
+# Production configuration for IONOS Managed Kubernetes + DBaaS PostgreSQL
+# Replace all YOUR_* placeholders before deploying
+
+image:
+  tag: "28"
+
+nextcloud:
+  host: YOUR_DOMAIN  # e.g. nextcloud.example.com
+  username: admin
+  existingSecret:
+    enabled: true
+    secretName: nextcloud-admin-credentials
+    usernameKey: username
+    passwordKey: password
+
+internalDatabase:
+  enabled: false
+
+externalDatabase:
+  enabled: true
+  type: postgresql
+  existingSecret:
+    enabled: true
+    secretName: nextcloud-dbaas-credentials
+    hostKey: db-host
+    databaseKey: db-name
+    usernameKey: db-user
+    passwordKey: db-password
+
+persistence:
+  enabled: true
+  storageClass: ionos-enterprise-ssd  # SSD for better performance
+  size: 100Gi
+
+resources:
+  requests:
+    memory: "512Mi"
+    cpu: "250m"
+  limits:
+    memory: "2Gi"
+    cpu: "2000m"
+
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "10g"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  tls:
+    - secretName: nextcloud-tls-secret
+      hosts:
+        - YOUR_DOMAIN
+
+redis:
+  enabled: true  # Recommended for production caching
+  auth:
+    enabled: true
+    existingSecret: nextcloud-redis-secret
+    existingSecretPasswordKey: redis-password
+
+cronjob:
+  enabled: true
+
+livenessProbe:
+  enabled: true
+readinessProbe:
+  enabled: true

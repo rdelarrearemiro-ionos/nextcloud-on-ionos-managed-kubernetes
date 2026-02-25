@@ -1,0 +1,14 @@
+# Secrets — never commit real credentials
+manifests/03-database/dbaas-secret.yaml
+helm/values-secret.yaml
+*.secret.yaml
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp

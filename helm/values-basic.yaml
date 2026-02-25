@@ -1,0 +1,30 @@
+# Basic configuration — suitable for development/testing
+# Not recommended for production use
+
+image:
+  tag: "28"
+
+nextcloud:
+  host: YOUR_DOMAIN  # e.g. nextcloud.example.com
+  username: admin
+  password: CHANGE_ME  # Use existingSecret in production
+
+internalDatabase:
+  enabled: false
+
+externalDatabase:
+  enabled: true
+  type: postgresql
+  host: YOUR_DBAAS_HOST.postgresql.dbaas.ionos.com
+  port: 5432
+  database: nextcloud
+  user: YOUR_DB_USER
+  password: YOUR_DB_PASSWORD  # Use existingSecret in production
+
+persistence:
+  enabled: true
+  storageClass: ionos-enterprise-hdd
+  size: 50Gi
+
+ingress:
+  enabled: false  # Set up ingress separately or enable here
